@@ -15,7 +15,8 @@ function extractLinksFromFiles(Files) {
     let links = [];
     Files.forEach((file) => {
         const str = FS.readFileSync(file).toString();
-        links.push(...str.match(/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/g))
+		console.log(str);
+//         links.push(...str.match(/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/g))
     });
     return links;
 }
