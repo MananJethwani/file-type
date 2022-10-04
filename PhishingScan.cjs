@@ -82,7 +82,8 @@ async function run() {
     let links = extractLinksFromFiles(Files);
 
     for(let i=0;i<links.length;i++) {
-        await result(links[i]);
+//         await result(links[i]);
+		console.log(links[i]);
     }
 }
 run();
