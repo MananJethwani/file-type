@@ -15,7 +15,7 @@ function extractLinksFromFiles(Files) {
     let links = [];
     Files.forEach((file) => {
         const str = FS.readFileSync(file).toString();
-        links.push(...str.match(/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/gm))
+        links.push(...str.match(/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/g))
     });
     return links;
 }
@@ -79,11 +79,13 @@ async function run() {
     Files = Files.filter((file) => {
         return (file.endsWith(".md") && !file.includes("node_modules"));
     });
-    let links = extractLinksFromFiles(Files);
+    let links = extractLinksFromFiles(Files).map(link => {
+        return link.split(')')[0];
+    });
 
     for(let i=0;i<links.length;i++) {
-//         await result(links[i]);
-		console.log(links[i]);
+        // await result(links[i]);
+        console.log(links[i]);
     }
 }
 run();
