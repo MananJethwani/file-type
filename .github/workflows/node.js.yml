@@ -23,4 +23,4 @@ jobs:
     - run: sudo apt install nodejs npm
     - run: npm init -y
     - run: npm install axios
-    - run: node PhishingScan.js
+    - run: node PhishingScan.cjs
